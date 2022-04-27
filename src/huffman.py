@@ -73,9 +73,7 @@ def encoding(x: str) -> Tree:
         # Remember that heap.pop() and heap.append() are
         # list operations, but you need to use the hq.heappop()
         # or hq.heappush() functions.
-        left = hq.heappop(heap)
-        right = hq.heappop(heap)
-        hq.heappush(heap, Node(left.count + right.count, left, right))
+        ...
 
     return heap.pop()
 
@@ -96,10 +94,9 @@ def build_encoding_table(tree: Tree,
     # large trees in an application like this.
     res = res if res is not None else {}
     if isinstance(tree, Leaf):
-        res[tree.letter] = "".join(bits)
+        ...
     else:
-        build_encoding_table(tree.left, bits + ("0",), res)
-        build_encoding_table(tree.right, bits + ("1",), res)
+        ...
     return res
 
 
@@ -153,11 +150,7 @@ def decode(x: bits, enc: Encoding) -> str:
             # bit, you can do that with `b = next(bits)`, and
             # then you move the node to the left or right child
             # based on the bit.
-            if isinstance(node, Leaf):
-                decoding.append(node.letter)
-                node = enc.tree
-            else:
-                node = node.left if next(bits) == "0" else node.right
+            ...
 
     except StopIteration:
         # When we asked for a bit that wasn't there, we end
